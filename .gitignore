@@ -1,13 +1,17 @@
-# reference: https://gist.github.com/vmandic/ac2ecc9c24f6899ee0ec46e4ce444a0e
+# https://github.com/dotnet/core/blob/main/.gitignore
 
 *.swp
 *.*~
 project.lock.json
 .DS_Store
 *.pyc
+nupkg/
 
 # Visual Studio Code
-.vscode
+!.vscode/
+
+# Rider
+.idea
 
 # User-specific files
 *.suo
@@ -26,6 +30,7 @@ build/
 bld/
 [Bb]in/
 [Oo]bj/
+[Oo]ut/
 msbuild.log
 msbuild.err
 msbuild.wrn
