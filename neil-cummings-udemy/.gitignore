@@ -45,4 +45,4 @@ app.db-wal
 .env*
 
 appsettings*.json
-# !appsettings.[Ee]xample.json
+!appsettings.[Ee]xample.json
