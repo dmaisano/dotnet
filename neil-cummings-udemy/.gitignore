@@ -41,3 +41,8 @@ msbuild.wrn
 app.db
 app.db-shm
 app.db-wal
+
+.env*
+
+appsettings*.json
+# !appsettings.[Ee]xample.json

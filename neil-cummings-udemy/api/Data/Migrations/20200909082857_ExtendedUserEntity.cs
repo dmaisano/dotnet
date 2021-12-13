@@ -1,9 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-#nullable disable
-
-namespace api.Data.Migrations
+namespace API.Data.Migrations
 {
     public partial class ExtendedUserEntity : Migration
     {

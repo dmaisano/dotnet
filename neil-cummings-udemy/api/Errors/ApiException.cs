@@ -1,4 +1,4 @@
-namespace api.Errors
+namespace API.Errors
 {
     public class ApiException
     {
@@ -10,9 +10,7 @@ namespace api.Errors
         }
 
         public int StatusCode { get; set; }
-
         public string Message { get; set; }
-
         public string Details { get; set; }
     }
 }

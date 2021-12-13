@@ -1,22 +1,18 @@
-using api.DTOs;
-using api.Entity;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using API.DTOs;
+using API.Entities;
 
-namespace api.Interfaces
+namespace API.Interfaces
 {
     public interface IUserRepository
     {
         void Update(AppUser user);
-
         Task<bool> SaveAllAsync();
-
         Task<IEnumerable<AppUser>> GetUsersAsync();
-
         Task<AppUser> GetUserByIdAsync(int id);
-
-        Task<AppUser> GetUserByUsername(string username);
-
-        Task<IEnumerable<MemberDTO>> GetMembersAsync();
-
-        Task<MemberDTO> GetMemberAsync(string username);
+        Task<AppUser> GetUserByUsernameAsync(string username);
+        Task<IEnumerable<MemberDto>> GetMembersAsync();
+        Task<MemberDto> GetMemberAsync(string username);
     }
 }

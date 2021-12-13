@@ -1,6 +1,11 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
-namespace api.Controllers
+namespace API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -13,19 +18,23 @@ namespace api.Controllers
 
         private readonly ILogger<WeatherForecastController> _logger;
 
+        // The Web API will only accept tokens 1) for users, and 2) having the access_as_user scope for this API
+        static readonly string[] scopeRequiredByApi = new string[] { "access_as_user" };
+
         public WeatherForecastController(ILogger<WeatherForecastController> logger)
         {
             _logger = logger;
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
+        [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
+            var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
+                TemperatureC = rng.Next(-20, 55),
+                Summary = Summaries[rng.Next(Summaries.Length)]
             })
             .ToArray();
         }

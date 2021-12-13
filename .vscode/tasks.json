@@ -7,7 +7,7 @@
       "type": "process",
       "args": [
         "build",
-        "${workspaceFolder}/neil-cummings-udemy/api/api.csproj",
+        "${workspaceFolder}/neil-cummings-udemy/API/API.csproj",
         "/property:GenerateFullPaths=true",
         "/consoleloggerparameters:NoSummary"
       ],
@@ -19,7 +19,7 @@
       "type": "process",
       "args": [
         "publish",
-        "${workspaceFolder}/neil-cummings-udemy/api/api.csproj",
+        "${workspaceFolder}/neil-cummings-udemy/API/API.csproj",
         "/property:GenerateFullPaths=true",
         "/consoleloggerparameters:NoSummary"
       ],
@@ -32,7 +32,7 @@
       "args": [
         "watch",
         "run",
-        "${workspaceFolder}/neil-cummings-udemy/api/api.csproj",
+        "${workspaceFolder}/neil-cummings-udemy/API/API.csproj",
         "/property:GenerateFullPaths=true",
         "/consoleloggerparameters:NoSummary"
       ],

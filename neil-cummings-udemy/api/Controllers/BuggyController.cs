@@ -1,31 +1,30 @@
-using api.Data;
-using api.Entity;
+using System;
+using API.Data;
+using API.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace api.Controllers
+namespace API.Controllers
 {
     public class BuggyController : BaseApiController
     {
         private readonly DataContext _context;
-
         public BuggyController(DataContext context)
         {
             _context = context;
-
         }
 
         [Authorize]
         [HttpGet("auth")]
-        public async Task<ActionResult<string>> GetSecret()
+        public ActionResult<string> GetSecret()
         {
-            return await Task.Run(() => "secret text");
+            return "secret text";
         }
 
         [HttpGet("not-found")]
-        public async Task<ActionResult<AppUser>> GetNotFound()
+        public ActionResult<AppUser> GetNotFound()
         {
-            var thing = await _context.Users.FindAsync(-1);
+            var thing = _context.Users.Find(-1);
 
             if (thing == null) return NotFound();
 
@@ -33,34 +32,19 @@ namespace api.Controllers
         }
 
         [HttpGet("server-error")]
-        public async Task<ActionResult<string>> GetServerError()
+        public ActionResult<string> GetServerError()
         {
-            var thing = await _context.Users.FindAsync(-1);
+            var thing = _context.Users.Find(-1);
 
-            // should be null and throw a null reference exception
-            var result = thing.ToString();
+            var thingToReturn = thing.ToString();
 
-            return result;
-
-            // try
-            // {
-            //     var thing = await _context.Users.FindAsync(-1);
-
-            //     // should be null and throw a null reference exception
-            //     var result = thing.ToString();
-
-            //     return result;
-            // }
-            // catch (Exception ex)
-            // {
-            //     return StatusCode(500, "What's going on here?");
-            // }
+            return thingToReturn;
         }
 
         [HttpGet("bad-request")]
-        public async Task<ActionResult<string>> GetBadRequest()
+        public ActionResult<string> GetBadRequest()
         {
-            return await Task.Run(() => BadRequest("This was not a good request"));
+            return BadRequest("This was not a good request");
         }
     }
 }
